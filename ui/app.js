@@ -7,7 +7,7 @@ const port = config.port;
 var app = express();
 
 app.get('/', (request, response) => {
-    response.send('<h1>LifeLine</h1>');
+    response.send('<h1>LifeLiner</h1>');
 });
 
 // Start server
