@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('./middlewares/bodyParser');
+const notFound = require('./middlewares/notFound');
 const routes = require('./routes');
 const config = require('./config.json');
 
@@ -16,6 +17,7 @@ mongoose.connect(config.database.connection).catch((error) => {
 var app = express();
 app.use(bodyParser);
 app.use('/', routes);
+app.use(notFound);
 
 // Start server
 var server = app.listen(apiPort, () => {
