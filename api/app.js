@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const routes = require('./routes');
 const config = require('./config.json');
 
@@ -13,6 +14,7 @@ mongoose.connect(config.database.connection).catch((error) => {
 
 // Setup API
 var app = express();
+app.use(bodyParser.json());
 app.use('/', routes);
 
 // Start server

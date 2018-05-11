@@ -3,10 +3,15 @@ const Organization = require('../models/organization');
 function getOrganizations(request, response) {
     Organization.getOrganizations((error, organizations) => {
         if (error) {
+            var message = error.message;
+            response.status(500).json({
+                error: message
+            });
             console.error('Could not get organizations.');
-            console.error(error.message);
+            console.error(message);
+        } else {
+            response.status(200).json(organizations);
         }
-        response.status(200).json(organizations);
     });
 }
 
@@ -15,14 +20,38 @@ function getOrganizationById(request, response) {
 
     Organization.getOrganizationById(id, (error, organization) => {
         if (error) {
+            var message = error.message;
+            response.status(400).json({
+                error: message
+            });
             console.error(`Could not get organization with ID: ${id}.`);
-            console.error(error.message);
+            console.error(message);
+        } else {
+            response.status(200).json(organization);
         }
-        response.status(200).json(organization);
+    });
+}
+
+function addOrganization(request, response) {
+    var organization = request.body;
+
+    Organization.addOrganization(organization, (error, organization) => {
+        if (error) {
+            var message = error.message;
+            response.status(400).json({
+                error: message
+            });
+            console.error('Could not create organization.');
+            console.error('Body:', organization);
+            console.error(message);
+        } else {
+            response.status(201).json(organization);
+        }
     });
 }
 
 module.exports = {
     getOrganizations,
-    getOrganizationById
+    getOrganizationById,
+    addOrganization
 };
