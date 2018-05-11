@@ -7,7 +7,8 @@ var callSchema = mongoose.Schema(
             required: true
         },
         audience: {
-            type: [String]
+            type: [String],
+            default: void 0
         }
     },
     { _id: false }
@@ -23,7 +24,8 @@ var textSchema = mongoose.Schema(
             type: String
         },
         audience: {
-            type: [String]
+            type: [String],
+            default: void 0
         }
     },
     { _id: false }
@@ -36,7 +38,8 @@ var chatSchema = mongoose.Schema(
             required: true
         },
         audience: {
-            type: [String]
+            type: [String],
+            default: void 0
         }
     },
     { _id: false }
@@ -54,13 +57,16 @@ var schema = mongoose.Schema(
         },
         contacts: {
             call: {
-                type: [callSchema]
+                type: [callSchema],
+                default: void 0
             },
             text: {
-                type: [textSchema]
+                type: [textSchema],
+                default: void 0
             },
             chat: {
-                type: [chatSchema]
+                type: [chatSchema],
+                default: void 0
             }
         }
     },
