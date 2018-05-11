@@ -1,90 +1,18 @@
 const mongoose = require('mongoose');
+const OrganizationSchema = require('../schemas/organization');
 
-var callSchema = mongoose.Schema(
-    {
-        number: {
-            type: String,
-            required: true
-        },
-        audience: {
-            type: [String],
-            default: void 0
-        }
-    },
-    { _id: false }
-);
+var OrganizationModel = mongoose.model('organizations', OrganizationSchema);
 
-var textSchema = mongoose.Schema(
-    {
-        number: {
-            type: String,
-            required: true
-        },
-        phrase: {
-            type: String
-        },
-        audience: {
-            type: [String],
-            default: void 0
-        }
-    },
-    { _id: false }
-);
-
-var chatSchema = mongoose.Schema(
-    {
-        url: {
-            type: String,
-            required: true
-        },
-        audience: {
-            type: [String],
-            default: void 0
-        }
-    },
-    { _id: false }
-);
-
-var schema = mongoose.Schema(
-    {
-        name: {
-            type: String,
-            required: true
-        },
-        website: {
-            type: String,
-            required: true
-        },
-        contacts: {
-            call: {
-                type: [callSchema],
-                default: void 0
-            },
-            text: {
-                type: [textSchema],
-                default: void 0
-            },
-            chat: {
-                type: [chatSchema],
-                default: void 0
-            }
-        }
-    },
-    { versionKey: false }
-);
-
-var model = mongoose.model('organizations', schema);
-
-model.getOrganizations = (callback) => {
-    model.find(callback);
+OrganizationModel.getOrganizations = (callback) => {
+    OrganizationModel.find(callback);
 };
 
-model.getOrganizationById = (id, callback) => {
-    model.findById(id, callback);
+OrganizationModel.getOrganizationById = (id, callback) => {
+    OrganizationModel.findById(id, callback);
 };
 
-model.addOrganization = (organization, callback) => {
-    model.create(organization, callback);
+OrganizationModel.addOrganization = (organization, callback) => {
+    OrganizationModel.create(organization, callback);
 };
 
-module.exports = model;
+module.exports = OrganizationModel;

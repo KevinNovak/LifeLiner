@@ -1,7 +1,7 @@
-const Organization = require('../models/organization');
+const OrganizationModel = require('../models/organization');
 
 function getOrganizations(request, response) {
-    Organization.getOrganizations((error, organizations) => {
+    OrganizationModel.getOrganizations((error, organizations) => {
         if (error) {
             var message = error.message;
             response.status(500).json({
@@ -18,7 +18,7 @@ function getOrganizations(request, response) {
 function getOrganizationById(request, response) {
     var id = request.params.id;
 
-    Organization.getOrganizationById(id, (error, organization) => {
+    OrganizationModel.getOrganizationById(id, (error, organization) => {
         if (error) {
             var message = error.message;
             response.status(400).json({
@@ -35,7 +35,7 @@ function getOrganizationById(request, response) {
 function addOrganization(request, response) {
     var organization = request.body;
 
-    Organization.addOrganization(organization, (error, organization) => {
+    OrganizationModel.addOrganization(organization, (error, organization) => {
         if (error) {
             var message = error.message;
             response.status(400).json({
