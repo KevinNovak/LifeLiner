@@ -4,7 +4,7 @@ var TextSchema = new Schema(
     {
         number: {
             type: String,
-            required: true
+            required: [true, 'Phone number to text is required.']
         },
         phrase: {
             type: String

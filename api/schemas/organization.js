@@ -1,31 +1,19 @@
 const Schema = require('mongoose').Schema;
-const CallSchema = require('./call');
-const TextSchema = require('./text');
-const ChatSchema = require('./chat');
+const ContactsSchema = require('./contacts');
 
 var OrganizationSchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: [true, 'Organization name is required.']
         },
         website: {
             type: String,
-            required: true
+            required: [true, 'Organization website is required.']
         },
         contacts: {
-            call: {
-                type: [CallSchema],
-                default: void 0
-            },
-            text: {
-                type: [TextSchema],
-                default: void 0
-            },
-            chat: {
-                type: [ChatSchema],
-                default: void 0
-            }
+            type: ContactsSchema,
+            required: [true, 'Organization contacts are required.']
         }
     },
     { versionKey: false }

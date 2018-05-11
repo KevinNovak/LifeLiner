@@ -4,7 +4,7 @@ var CallSchema = new Schema(
     {
         number: {
             type: String,
-            required: true
+            required: [true, 'Phone number to call is required.']
         },
         audience: {
             type: [String],
