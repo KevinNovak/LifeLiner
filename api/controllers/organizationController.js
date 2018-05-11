@@ -21,13 +21,21 @@ function getOrganizationById(request, response) {
     OrganizationModel.getOrganizationById(id, (error, organization) => {
         if (error) {
             var message = error.message;
-            response.status(400).json({
+            response.status(500).json({
                 error: message
             });
-            console.error(`Could not get organization with ID: ${id}.`);
+            console.error(`Error finding organization with ID: ${id}.`);
             console.error(message);
         } else {
-            response.status(200).json(organization);
+            if (!organization) {
+                var message = `Could not find organization with ID: ${id}.`;
+                response.status(404).json({
+                    error: message
+                });
+                console.error(message);
+            } else {
+                response.status(200).json(organization);
+            }
         }
     });
 }
@@ -38,7 +46,7 @@ function addOrganization(request, response) {
     OrganizationModel.addOrganization(organization, (error, organization) => {
         if (error) {
             var message = error.message;
-            response.status(400).json({
+            response.status(500).json({
                 error: message
             });
             console.error('Could not create organization.');
