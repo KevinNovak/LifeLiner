@@ -1,14 +1,24 @@
 {
+  "author": "Kevin Novak",
   "name": "lifeliner-api",
   "version": "1.0.0",
   "description": "A national directory of suicide prevention resources.",
+  "keywords": [
+    "national",
+    "suicide",
+    "directory",
+    "prevention",
+    "awareness",
+    "lifeliner",
+    "lifeline",
+    "hotline"
+  ],
+  "license": "MIT",
   "main": "app.js",
   "scripts": {
     "start": "pm2 start app.js --name lifeliner-api",
     "dev": "nodemon app.js"
   },
-  "author": "Kevin Novak",
-  "license": "MIT",
   "dependencies": {
     "express": "4.16.3",
     "mongoose": "5.0.18",
@@ -16,5 +26,13 @@
   },
   "devDependencies": {
     "nodemon": "1.17.4"
+  },
+  "homepage": "https://github.com/KevinNovak/LifeLiner#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KevinNovak/LifeLiner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KevinNovak/LifeLiner/issues"
   }
 }
