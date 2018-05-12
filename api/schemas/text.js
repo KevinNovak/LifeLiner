@@ -1,10 +1,16 @@
 const Schema = require('mongoose').Schema;
 const audiences = require('../data/audiences.json');
+const regex = require('../data/regex.json');
+
+const numberPattern = RegExp(
+    `^(${regex.phone.longCode}$|^${regex.phone.shortCode}$)`
+);
 
 var TextSchema = new Schema(
     {
         number: {
             type: String,
+            match: [numberPattern, 'Phone number is not valid.'],
             required: [true, 'Phone number to text is required.']
         },
         phrase: {
