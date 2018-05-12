@@ -1,11 +1,13 @@
 const Schema = require('mongoose').Schema;
 const audiences = require('../data/audiences.json');
+const regex = require('../data/regex');
 
 var ChatSchema = new Schema(
     {
         url: {
             type: String,
-            required: [true, 'URL to chat is required.']
+            match: [regex.url, 'Chat URL is not valid'],
+            required: [true, 'Chat URL is required.']
         },
         audience: {
             type: [String],
