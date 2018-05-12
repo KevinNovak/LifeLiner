@@ -3,7 +3,7 @@ const config = require('./config.json');
 
 const port = config.port;
 
-// Setup API
+// Setup app
 var app = express();
 
 app.get('/', (request, response) => {
