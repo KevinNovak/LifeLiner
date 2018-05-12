@@ -37,7 +37,7 @@ function addOrganization(request, response) {
 
     OrganizationModel.addOrganization(organization, (error, organization) => {
         if (error) {
-            response.status(500).json({
+            response.status(400).json({
                 error: error.message
             });
         } else {
