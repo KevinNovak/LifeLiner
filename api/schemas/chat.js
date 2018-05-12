@@ -5,7 +5,7 @@ var ChatSchema = new Schema(
     {
         url: {
             type: String,
-            required: true
+            required: [true, 'URL to chat is required.']
         },
         audience: {
             type: [String],
