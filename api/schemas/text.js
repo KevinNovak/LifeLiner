@@ -1,4 +1,5 @@
 const Schema = require('mongoose').Schema;
+const audiences = require('../data/audiences.json');
 
 var TextSchema = new Schema(
     {
@@ -11,6 +12,7 @@ var TextSchema = new Schema(
         },
         audience: {
             type: [String],
+            enum: audiences,
             default: void 0
         }
     },
