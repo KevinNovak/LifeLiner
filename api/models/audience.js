@@ -7,4 +7,12 @@ AudienceModel.getAudiences = (callback) => {
     AudienceModel.find(callback);
 };
 
+AudienceModel.getAudienceNames = async () => {
+    var audienceNames = [];
+    await AudienceModel.distinct('name', (error, names) => {
+        audienceNames = names;
+    });
+    return audienceNames;
+};
+
 module.exports = AudienceModel;

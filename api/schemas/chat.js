@@ -1,5 +1,5 @@
 const Schema = require('mongoose').Schema;
-const audiences = require('../data/audiences.json');
+const audienceValidator = require('../validators/audienceValidator');
 const regex = require('../data/regex');
 
 var ChatSchema = new Schema(
@@ -11,7 +11,11 @@ var ChatSchema = new Schema(
         },
         audience: {
             type: [String],
-            enum: audiences,
+            validate: {
+                validator: audienceValidator.validateAudiences,
+                isAsync: true,
+                message: 'Audience is invalid. Check that the audience exists.'
+            },
             default: void 0
         }
     },
