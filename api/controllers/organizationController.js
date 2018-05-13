@@ -46,6 +46,32 @@ function addOrganization(request, response) {
     });
 }
 
+function updateOrganization(request, response) {
+    var id = request.params.id;
+    var organization = request.body;
+
+    OrganizationModel.updateOrganization(
+        id,
+        organization,
+        { runValidators: true, new: true },
+        (error, organization) => {
+            if (error) {
+                response.status(500).json({
+                    error: error.message
+                });
+            } else {
+                if (!organization) {
+                    response.status(404).json({
+                        error: `Could not find organization with ID: ${id}.`
+                    });
+                } else {
+                    response.status(200).json(organization);
+                }
+            }
+        }
+    );
+}
+
 function removeOrganization(request, response) {
     var id = request.params.id;
 
@@ -70,5 +96,6 @@ module.exports = {
     getOrganizations,
     getOrganization,
     addOrganization,
+    updateOrganization,
     removeOrganization
 };
