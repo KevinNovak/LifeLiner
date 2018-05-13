@@ -7,7 +7,7 @@ OrganizationModel.getOrganizations = (callback) => {
     OrganizationModel.find(callback);
 };
 
-OrganizationModel.getOrganizationById = (id, callback) => {
+OrganizationModel.getOrganization = (id, callback) => {
     OrganizationModel.findById(id, callback);
 };
 

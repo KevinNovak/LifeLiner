@@ -12,10 +12,10 @@ function getOrganizations(request, response) {
     });
 }
 
-function getOrganizationById(request, response) {
+function getOrganization(request, response) {
     var id = request.params.id;
 
-    OrganizationModel.getOrganizationById(id, (error, organization) => {
+    OrganizationModel.getOrganization(id, (error, organization) => {
         if (error) {
             response.status(500).json({
                 error: error.message
@@ -68,7 +68,7 @@ function removeOrganization(request, response) {
 
 module.exports = {
     getOrganizations,
-    getOrganizationById,
+    getOrganization,
     addOrganization,
     removeOrganization
 };

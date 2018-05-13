@@ -3,7 +3,7 @@ const organizationController = require('../controllers/organizationController');
 
 // Organizations
 router.get('/', organizationController.getOrganizations);
-router.get('/:id', organizationController.getOrganizationById);
+router.get('/:id', organizationController.getOrganization);
 
 router.post('/', organizationController.addOrganization);
 
