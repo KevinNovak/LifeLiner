@@ -15,4 +15,8 @@ OrganizationModel.addOrganization = (organization, callback) => {
     OrganizationModel.create(organization, callback);
 };
 
+OrganizationModel.removeOrganization = (id, callback) => {
+    OrganizationModel.findByIdAndRemove(id, callback);
+};
+
 module.exports = OrganizationModel;

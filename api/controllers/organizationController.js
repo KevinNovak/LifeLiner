@@ -46,8 +46,29 @@ function addOrganization(request, response) {
     });
 }
 
+function removeOrganization(request, response) {
+    var id = request.params.id;
+
+    OrganizationModel.removeOrganization(id, (error, organization) => {
+        if (error) {
+            response.status(500).json({
+                error: error.message
+            });
+        } else {
+            if (!organization) {
+                response.status(404).json({
+                    error: `Could not find organization with ID: ${id}.`
+                });
+            } else {
+                response.status(200).json(organization);
+            }
+        }
+    });
+}
+
 module.exports = {
     getOrganizations,
     getOrganizationById,
-    addOrganization
+    addOrganization,
+    removeOrganization
 };
