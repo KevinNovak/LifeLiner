@@ -90,6 +90,7 @@ function updateAudience(request, response) {
     );
 }
 
+// TODO: Don't remove unless not being used
 function removeAudience(request, response) {
     var id = request.params.id;
 
