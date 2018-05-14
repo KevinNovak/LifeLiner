@@ -1,15 +1,14 @@
 const AudienceModel = require('../models/audience');
 
-function getAudiences(request, response) {
-    AudienceModel.getAudiences((error, audiences) => {
-        if (error) {
-            response.status(500).json({
-                error: error.message
-            });
-        } else {
-            response.status(200).json(audiences);
-        }
-    });
+async function getAudiences(request, response) {
+    try {
+        var audiences = await AudienceModel.getAudiences();
+        response.status(200).json(audiences);
+    } catch (error) {
+        response.status(500).json({
+            error: error.message
+        });
+    }
 }
 
 function getAudience(request, response) {
