@@ -15,7 +15,7 @@ var server = app.listen(port, () => {
     console.log(`LifeLiner started on port ${port}`);
 });
 
-process.on('unhandledRejection', (error) => {
+process.on('unhandledRejection', error => {
     console.error('A promise rejection was unhandled.');
     console.error(error.message);
 });

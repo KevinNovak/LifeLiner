@@ -8,7 +8,7 @@ const config = require('./config.json');
 const apiPort = config.api.port;
 
 // Connect to database
-mongoose.connect(config.database.connection).catch((error) => {
+mongoose.connect(config.database.connection).catch(error => {
     console.error('Unable to connect to database.');
     console.error(error.message);
 });
@@ -24,7 +24,7 @@ var server = app.listen(apiPort, () => {
     console.log(`API started on port ${apiPort}`);
 });
 
-process.on('unhandledRejection', (error) => {
+process.on('unhandledRejection', error => {
     console.error('A promise rejection was unhandled.');
     console.error(error.message);
 });

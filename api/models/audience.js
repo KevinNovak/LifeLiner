@@ -3,7 +3,7 @@ const AudienceSchema = require('../schemas/audience');
 
 var AudienceModel = mongoose.model('audiences', AudienceSchema);
 
-AudienceModel.getAudiences = (callback) => {
+AudienceModel.getAudiences = callback => {
     AudienceModel.find(callback);
 };
 

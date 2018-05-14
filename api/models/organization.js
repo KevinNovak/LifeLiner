@@ -3,7 +3,7 @@ const OrganizationSchema = require('../schemas/organization');
 
 var OrganizationModel = mongoose.model('organizations', OrganizationSchema);
 
-OrganizationModel.getOrganizations = (callback) => {
+OrganizationModel.getOrganizations = callback => {
     OrganizationModel.find(callback);
 };
 

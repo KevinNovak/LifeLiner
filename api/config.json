@@ -3,6 +3,6 @@
         "port": 3005
     },
     "database": {
-        "connection": "mongodb://localhost/lifeliner" 
+        "connection": "mongodb://localhost/lifeliner"
     }
 }
