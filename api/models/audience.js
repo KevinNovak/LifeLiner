@@ -22,8 +22,8 @@ AudienceModel.updateAudience = async (id, update) => {
     }).exec();
 };
 
-AudienceModel.removeAudience = (id, callback) => {
-    AudienceModel.findByIdAndRemove(id, callback);
+AudienceModel.removeAudience = async id => {
+    return await AudienceModel.findByIdAndRemove(id).exec();
 };
 
 module.exports = AudienceModel;
