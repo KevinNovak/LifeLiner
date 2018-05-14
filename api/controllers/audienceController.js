@@ -52,8 +52,29 @@ function addAudience(request, response) {
     });
 }
 
+function removeAudience(request, response) {
+    var id = request.params.id;
+
+    AudienceModel.removeAudience(id, (error, audience) => {
+        if (error) {
+            response.status(500).json({
+                error: error.message
+            });
+        } else {
+            if (!audience) {
+                response.status(404).json({
+                    error: `Could not find audience with ID: ${id}.`
+                });
+            } else {
+                response.status(200).json(audience);
+            }
+        }
+    });
+}
+
 module.exports = {
     getAudiences,
     getAudience,
-    addAudience
+    addAudience,
+    removeAudience
 };

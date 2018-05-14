@@ -23,4 +23,8 @@ AudienceModel.addAudience = (audience, callback) => {
     AudienceModel.create(audience, callback);
 };
 
+AudienceModel.removeAudience = (id, callback) => {
+    AudienceModel.findByIdAndRemove(id, callback);
+};
+
 module.exports = AudienceModel;
