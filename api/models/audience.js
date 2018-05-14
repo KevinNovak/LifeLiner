@@ -23,6 +23,10 @@ AudienceModel.addAudience = (audience, callback) => {
     AudienceModel.create(audience, callback);
 };
 
+AudienceModel.updateAudience = (id, audience, options, callback) => {
+    AudienceModel.findByIdAndUpdate(id, audience, options, callback);
+};
+
 AudienceModel.removeAudience = (id, callback) => {
     AudienceModel.findByIdAndRemove(id, callback);
 };

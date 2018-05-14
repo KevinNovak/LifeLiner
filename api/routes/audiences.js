@@ -6,6 +6,8 @@ router.get('/:id', audienceController.getAudience);
 
 router.post('/', audienceController.addAudience);
 
+router.put('/:id', audienceController.updateAudience);
+
 router.delete('/:id', audienceController.removeAudience);
 
 module.exports = router;

@@ -52,6 +52,32 @@ function addAudience(request, response) {
     });
 }
 
+function updateAudience(request, response) {
+    var id = request.params.id;
+    var audience = request.body;
+
+    AudienceModel.updateAudience(
+        id,
+        audience,
+        { runValidators: true, new: true },
+        (error, audience) => {
+            if (error) {
+                response.status(500).json({
+                    error: error.message
+                });
+            } else {
+                if (!audience) {
+                    response.status(404).json({
+                        error: `Could not find audience with ID: ${id}.`
+                    });
+                } else {
+                    response.status(200).json(audience);
+                }
+            }
+        }
+    );
+}
+
 function removeAudience(request, response) {
     var id = request.params.id;
 
@@ -76,5 +102,6 @@ module.exports = {
     getAudiences,
     getAudience,
     addAudience,
+    updateAudience,
     removeAudience
 };
