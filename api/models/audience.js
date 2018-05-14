@@ -15,8 +15,11 @@ AudienceModel.addAudience = async audience => {
     return await AudienceModel.create(audience);
 };
 
-AudienceModel.updateAudience = (id, audience, options, callback) => {
-    AudienceModel.findByIdAndUpdate(id, audience, options, callback);
+AudienceModel.updateAudience = async (id, update) => {
+    return await AudienceModel.findByIdAndUpdate(id, update, {
+        runValidators: true,
+        new: true
+    }).exec();
 };
 
 AudienceModel.removeAudience = (id, callback) => {
