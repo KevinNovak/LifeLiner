@@ -32,7 +32,28 @@ function getAudience(request, response) {
     });
 }
 
+function addAudience(request, response) {
+    var audience = request.body;
+
+    AudienceModel.addAudience(audience, (error, audience) => {
+        if (error) {
+            if (error.name == 'ValidationError') {
+                response.status(400).json({
+                    error: error.message
+                });
+            } else {
+                response.status(500).json({
+                    error: error.message
+                });
+            }
+        } else {
+            response.status(201).json(audience);
+        }
+    });
+}
+
 module.exports = {
     getAudiences,
-    getAudience
+    getAudience,
+    addAudience
 };

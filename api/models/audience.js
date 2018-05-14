@@ -19,4 +19,8 @@ AudienceModel.getAudience = (id, callback) => {
     AudienceModel.findById(id, callback);
 };
 
+AudienceModel.addAudience = (audience, callback) => {
+    AudienceModel.create(audience, callback);
+};
+
 module.exports = AudienceModel;
