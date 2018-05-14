@@ -11,8 +11,8 @@ AudienceModel.getAudience = async id => {
     return await AudienceModel.findById(id).exec();
 };
 
-AudienceModel.addAudience = (audience, callback) => {
-    AudienceModel.create(audience, callback);
+AudienceModel.addAudience = async audience => {
+    return await AudienceModel.create(audience);
 };
 
 AudienceModel.updateAudience = (id, audience, options, callback) => {

@@ -29,27 +29,25 @@ async function getAudience(request, response) {
     }
 }
 
-function addAudience(request, response) {
-    var audience = request.body;
-
-    AudienceModel.addAudience(audience, (error, audience) => {
-        if (error) {
-            if (
-                error.name == 'ValidationError' ||
-                error.message.includes('E11000')
-            ) {
-                response.status(400).json({
-                    error: error.message
-                });
-            } else {
-                response.status(500).json({
-                    error: error.message
-                });
-            }
+async function addAudience(request, response) {
+    try {
+        var audienceToAdd = request.body;
+        var audience = await AudienceModel.addAudience(audienceToAdd);
+        response.status(201).json(audience);
+    } catch (error) {
+        if (
+            error.name == 'ValidationError' ||
+            error.message.includes('E11000')
+        ) {
+            response.status(400).json({
+                error: error.message
+            });
         } else {
-            response.status(201).json(audience);
+            response.status(500).json({
+                error: error.message
+            });
         }
-    });
+    }
 }
 
 function updateAudience(request, response) {
