@@ -5,8 +5,9 @@ async function getAudiences(request, response) {
         var audiences = await AudienceModel.getAudiences();
         response.status(200).json(audiences);
     } catch (error) {
+        console.log(error.message);
         response.status(500).json({
-            error: error.message
+            error: 'Internal server error.'
         });
     }
 }
@@ -23,8 +24,9 @@ async function getAudience(request, response) {
             response.status(200).json(audience);
         }
     } catch (error) {
+        console.log(error.message);
         response.status(500).json({
-            error: error.message
+            error: 'Internal server error.'
         });
     }
 }
@@ -43,8 +45,9 @@ async function addAudience(request, response) {
                 error: error.message
             });
         } else {
+            console.log(error.message);
             response.status(500).json({
-                error: error.message
+                error: 'Internal server error.'
             });
         }
     }
@@ -71,8 +74,9 @@ async function updateAudience(request, response) {
                 error: error.message
             });
         } else {
+            console.log(error.message);
             response.status(500).json({
-                error: error.message
+                error: 'Internal server error.'
             });
         }
     }
@@ -91,8 +95,9 @@ async function removeAudience(request, response) {
             response.status(200).json(audience);
         }
     } catch (error) {
+        console.log(error.message);
         response.status(500).json({
-            error: error.message
+            error: 'Internal server error.'
         });
     }
 }

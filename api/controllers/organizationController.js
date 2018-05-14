@@ -5,8 +5,9 @@ async function getOrganizations(request, response) {
         var organizations = await OrganizationModel.getOrganizations();
         response.status(200).json(organizations);
     } catch (error) {
+        console.log(error.message);
         response.status(500).json({
-            error: error.message
+            error: 'Internal server error.'
         });
     }
 }
@@ -23,8 +24,9 @@ async function getOrganization(request, response) {
             response.status(200).json(organization);
         }
     } catch (error) {
+        console.log(error.message);
         response.status(500).json({
-            error: error.message
+            error: 'Internal server error.'
         });
     }
 }
@@ -42,8 +44,9 @@ async function addOrganization(request, response) {
                 error: error.message
             });
         } else {
+            console.log(error.message);
             response.status(500).json({
-                error: error.message
+                error: 'Internal server error.'
             });
         }
     }
@@ -70,8 +73,9 @@ async function updateOrganization(request, response) {
                 error: error.message
             });
         } else {
+            console.log(error.message);
             response.status(500).json({
-                error: error.message
+                error: 'Internal server error.'
             });
         }
     }
@@ -89,8 +93,9 @@ async function removeOrganization(request, response) {
             response.status(200).json(organization);
         }
     } catch (error) {
+        console.log(error.message);
         response.status(500).json({
-            error: error.message
+            error: 'Internal server error.'
         });
     }
 }
