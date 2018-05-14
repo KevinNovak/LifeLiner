@@ -37,7 +37,10 @@ function addAudience(request, response) {
 
     AudienceModel.addAudience(audience, (error, audience) => {
         if (error) {
-            if (error.name == 'ValidationError') {
+            if (
+                error.name == 'ValidationError' ||
+                error.message.includes('E11000')
+            ) {
                 response.status(400).json({
                     error: error.message
                 });
@@ -62,9 +65,18 @@ function updateAudience(request, response) {
         { runValidators: true, new: true },
         (error, audience) => {
             if (error) {
-                response.status(500).json({
-                    error: error.message
-                });
+                if (
+                    error.name == 'ValidationError' ||
+                    error.message.includes('E11000')
+                ) {
+                    response.status(400).json({
+                        error: error.message
+                    });
+                } else {
+                    response.status(500).json({
+                        error: error.message
+                    });
+                }
             } else {
                 if (!audience) {
                     response.status(404).json({

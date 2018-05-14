@@ -62,9 +62,15 @@ function updateOrganization(request, response) {
         { runValidators: true, new: true },
         (error, organization) => {
             if (error) {
-                response.status(500).json({
-                    error: error.message
-                });
+                if (error.name == 'ValidationError') {
+                    response.status(400).json({
+                        error: error.message
+                    });
+                } else {
+                    response.status(500).json({
+                        error: error.message
+                    });
+                }
             } else {
                 if (!organization) {
                     response.status(404).json({
