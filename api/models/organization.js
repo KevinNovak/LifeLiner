@@ -3,29 +3,27 @@ const OrganizationSchema = require('../schemas/organization');
 
 var OrganizationModel = mongoose.model('organizations', OrganizationSchema);
 
-OrganizationModel.getOrganizations = callback => {
-    OrganizationModel.find(callback);
+OrganizationModel.getOrganizations = async () => {
+    return await OrganizationModel.find().exec();
 };
 
-OrganizationModel.getOrganization = (id, callback) => {
-    OrganizationModel.findById(id, callback);
+OrganizationModel.getOrganization = async id => {
+    return await OrganizationModel.findById(id).exec();
 };
 
-OrganizationModel.addOrganization = (organization, callback) => {
-    OrganizationModel.create(organization, callback);
+OrganizationModel.addOrganization = async organization => {
+    return await OrganizationModel.create(organization);
 };
 
-OrganizationModel.updateOrganization = (
-    id,
-    organization,
-    options,
-    callback
-) => {
-    OrganizationModel.findByIdAndUpdate(id, organization, options, callback);
+OrganizationModel.updateOrganization = async (id, update) => {
+    return await OrganizationModel.findByIdAndUpdate(id, update, {
+        runValidators: true,
+        new: true
+    }).exec();
 };
 
-OrganizationModel.removeOrganization = (id, callback) => {
-    OrganizationModel.findByIdAndRemove(id, callback);
+OrganizationModel.removeOrganization = async id => {
+    return await OrganizationModel.findByIdAndRemove(id).exec();
 };
 
 module.exports = OrganizationModel;
