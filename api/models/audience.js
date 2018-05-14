@@ -7,8 +7,8 @@ AudienceModel.getAudiences = async () => {
     return await AudienceModel.find().exec();
 };
 
-AudienceModel.getAudience = (id, callback) => {
-    AudienceModel.findById(id, callback);
+AudienceModel.getAudience = async id => {
+    return await AudienceModel.findById(id).exec();
 };
 
 AudienceModel.addAudience = (audience, callback) => {

@@ -11,24 +11,22 @@ async function getAudiences(request, response) {
     }
 }
 
-function getAudience(request, response) {
-    var id = request.params.id;
-
-    AudienceModel.getAudience(id, (error, audience) => {
-        if (error) {
-            response.status(500).json({
-                error: error.message
+async function getAudience(request, response) {
+    try {
+        var id = request.params.id;
+        var audience = await AudienceModel.getAudience(id);
+        if (!audience) {
+            response.status(404).json({
+                error: `Could not find audience with ID: ${id}.`
             });
         } else {
-            if (!audience) {
-                response.status(404).json({
-                    error: `Could not find audience with ID: ${id}.`
-                });
-            } else {
-                response.status(200).json(audience);
-            }
+            response.status(200).json(audience);
         }
-    });
+    } catch (error) {
+        response.status(500).json({
+            error: error.message
+        });
+    }
 }
 
 function addAudience(request, response) {
