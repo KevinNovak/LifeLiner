@@ -15,4 +15,8 @@ AudienceModel.getAudienceNames = async () => {
     return audienceNames;
 };
 
+AudienceModel.getAudience = (id, callback) => {
+    AudienceModel.findById(id, callback);
+};
+
 module.exports = AudienceModel;
