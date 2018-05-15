@@ -1,4 +1,5 @@
 const OrganizationModel = require('../models/organization');
+const language = require('../data/language.json');
 
 async function getOrganizations(request, response) {
     try {
@@ -7,7 +8,7 @@ async function getOrganizations(request, response) {
     } catch (error) {
         console.log(error.message);
         response.status(500).json({
-            error: 'Internal server error.'
+            error: language.errors['500']
         });
     }
 }
@@ -26,7 +27,7 @@ async function getOrganization(request, response) {
     } catch (error) {
         console.log(error.message);
         response.status(500).json({
-            error: 'Internal server error.'
+            error: language.errors['500']
         });
     }
 }
@@ -46,7 +47,7 @@ async function addOrganization(request, response) {
         } else {
             console.log(error.message);
             response.status(500).json({
-                error: 'Internal server error.'
+                error: language.errors['500']
             });
         }
     }
@@ -75,7 +76,7 @@ async function updateOrganization(request, response) {
         } else {
             console.log(error.message);
             response.status(500).json({
-                error: 'Internal server error.'
+                error: language.errors['500']
             });
         }
     }
@@ -95,7 +96,7 @@ async function removeOrganization(request, response) {
     } catch (error) {
         console.log(error.message);
         response.status(500).json({
-            error: 'Internal server error.'
+            error: language.errors['500']
         });
     }
 }

@@ -1,4 +1,5 @@
 const AudienceModel = require('../models/audience');
+const language = require('../data/language.json');
 
 async function getAudiences(request, response) {
     try {
@@ -7,7 +8,7 @@ async function getAudiences(request, response) {
     } catch (error) {
         console.log(error.message);
         response.status(500).json({
-            error: 'Internal server error.'
+            error: language.errors['500']
         });
     }
 }
@@ -26,7 +27,7 @@ async function getAudience(request, response) {
     } catch (error) {
         console.log(error.message);
         response.status(500).json({
-            error: 'Internal server error.'
+            error: language.errors['500']
         });
     }
 }
@@ -49,7 +50,7 @@ async function addAudience(request, response) {
         } else {
             console.log(error.message);
             response.status(500).json({
-                error: 'Internal server error.'
+                error: language.errors['500']
             });
         }
     }
@@ -78,7 +79,7 @@ async function updateAudience(request, response) {
         } else {
             console.log(error.message);
             response.status(500).json({
-                error: 'Internal server error.'
+                error: language.errors['500']
             });
         }
     }
@@ -99,7 +100,7 @@ async function removeAudience(request, response) {
     } catch (error) {
         console.log(error.message);
         response.status(500).json({
-            error: 'Internal server error.'
+            error: language.errors['500']
         });
     }
 }
