@@ -1,10 +1,17 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 const OrganizationSchema = require('../schemas/organization');
+
+OrganizationSchema.plugin(mongoosePaginate);
 
 var OrganizationModel = mongoose.model('organizations', OrganizationSchema);
 
 OrganizationModel.getOrganizations = async () => {
     return await OrganizationModel.find().exec();
+};
+
+OrganizationModel.getOrganizationsByPage = async (page, limit) => {
+    return await OrganizationModel.paginate({}, { page: page, limit: limit });
 };
 
 OrganizationModel.getOrganization = async id => {

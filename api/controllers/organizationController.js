@@ -3,7 +3,17 @@ const language = require('../data/language.json');
 
 async function getOrganizations(request, response) {
     try {
-        var organizations = await OrganizationModel.getOrganizations();
+        var page = parseInt(request.query.page);
+        var limit = parseInt(request.query.limit);
+        var organizations;
+        if (page && limit) {
+            organizations = await OrganizationModel.getOrganizationsByPage(
+                page,
+                limit
+            );
+        } else {
+            organizations = await OrganizationModel.getOrganizations();
+        }
         response.status(200).json(organizations);
     } catch (error) {
         console.log(error.message);

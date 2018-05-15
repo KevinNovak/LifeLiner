@@ -23,6 +23,7 @@
     "body-parser": "1.18.2",
     "express": "4.16.3",
     "mongoose": "5.0.18",
+    "mongoose-paginate": "5.0.3",
     "pm2": "2.10.3"
   },
   "devDependencies": {
