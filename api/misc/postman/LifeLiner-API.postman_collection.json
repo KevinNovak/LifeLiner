@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "6b501e69-31f2-4432-b1d7-ffa1a12959d1",
+		"name": "LifeLiner API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Organizations",
+			"description": "",
+			"item": [
+				{
+					"name": "GET /organizations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/organizations",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /organizations/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/organizations/{{organization-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"organizations",
+								"{{organization-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /organizations",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Crisis Text Line\",\r\n    \"website\": \"https://www.crisistextline.org/\",\r\n    \"contacts\": {\r\n        \"text\": [\r\n            {\r\n                \"number\": \"741741\",\r\n                \"phrase\": \"CONNECT\"\r\n            }\r\n        ]\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{base}}/organizations",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /organizations/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Crisis Text Line - Updated\"\n}"
+						},
+						"url": {
+							"raw": "{{base}}/organizations/{{organization-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"organizations",
+								"{{organization-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /organizations/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/organizations/{{organization-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"organizations",
+								"{{organization-id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Audiences",
+			"description": "",
+			"item": [
+				{
+					"name": "GET /audiences",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/audiences",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"audiences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /audiences/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/audiences/{{audience-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"audiences",
+								"{{audience-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /audiences",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Veterans\"\n}"
+						},
+						"url": {
+							"raw": "{{base}}/audiences",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"audiences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /audiences/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Veterans - Updated\"\n}"
+						},
+						"url": {
+							"raw": "{{base}}/audiences/{{audience-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"audiences",
+								"{{audience-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /audiences/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/audiences/{{audience-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"audiences",
+								"{{audience-id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "25966559-faa2-4b32-a56f-9941927980ec",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "562311e5-e09f-4be5-9564-e76f89b98914",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

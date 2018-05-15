@@ -37,6 +37,8 @@ async function addAudience(request, response) {
         var audience = await AudienceModel.addAudience(audienceToAdd);
         response.status(201).json(audience);
     } catch (error) {
+        console.log(error.name);
+        console.log(error.code);
         if (
             error.name == 'ValidationError' ||
             error.message.includes('E11000')

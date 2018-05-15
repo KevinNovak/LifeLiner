@@ -1,6 +1,6 @@
 # Custom directories
 .vscode/
-misc/
+exclude/
 
 # Custom files
 TODO.txt
