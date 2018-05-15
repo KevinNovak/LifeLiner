@@ -1,20 +1,23 @@
 {
 	"info": {
-		"_postman_id": "6b501e69-31f2-4432-b1d7-ffa1a12959d1",
+		"_postman_id": "5b048faa-6171-4ffe-ac0d-284fc8353cac",
 		"name": "LifeLiner API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Organizations",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "GET /organizations",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base}}/organizations",
 							"host": [
@@ -32,7 +35,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base}}/organizations/{{organization-id}}",
 							"host": [
@@ -41,6 +47,34 @@
 							"path": [
 								"organizations",
 								"{{organization-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /organizations?page={page}&limit={limit}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/organizations?page={{page}}&limit={{limit}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"organizations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
 							]
 						}
 					},
@@ -104,7 +138,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base}}/organizations/{{organization-id}}",
 							"host": [
@@ -122,14 +159,17 @@
 		},
 		{
 			"name": "Audiences",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "GET /audiences",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base}}/audiences",
 							"host": [
@@ -147,7 +187,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base}}/audiences/{{audience-id}}",
 							"host": [
@@ -219,7 +262,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base}}/audiences/{{audience-id}}",
 							"host": [
