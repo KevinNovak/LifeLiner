@@ -19,12 +19,8 @@ var TextSchema = new Schema(
             maxlength: [50, 'Text phrase is too long.']
         },
         audience: {
-            type: [String],
-            validate: {
-                validator: audienceValidator.validateAudiences,
-                isAsync: true,
-                message: 'Audience is invalid. Check that the audience exists.'
-            },
+            type: [Schema.Types.ObjectId],
+            ref: 'audiences',
             default: void 0
         }
     },

@@ -10,12 +10,8 @@ var ChatSchema = new Schema(
             required: [true, 'Chat URL is required.']
         },
         audience: {
-            type: [String],
-            validate: {
-                validator: audienceValidator.validateAudiences,
-                isAsync: true,
-                message: 'Audience is invalid. Check that the audience exists.'
-            },
+            type: [Schema.Types.ObjectId],
+            ref: 'audiences',
             default: void 0
         }
     },

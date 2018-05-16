@@ -1,13 +1,21 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 const OrganizationSchema = require('../schemas/organization');
+const contactTypes = require('../data/contactTypes.json');
 
 OrganizationSchema.plugin(mongoosePaginate);
 
 var OrganizationModel = mongoose.model('organizations', OrganizationSchema);
 
 OrganizationModel.getOrganizations = async () => {
-    return await OrganizationModel.find().exec();
+    var query = OrganizationModel.find();
+    for (var contactType of contactTypes) {
+        query.populate({
+            path: `contacts.${contactType}.audience`,
+            model: 'audiences'
+        });
+    }
+    return await query.exec();
 };
 
 OrganizationModel.getOrganizationsByPage = async (page, limit) => {

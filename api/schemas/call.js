@@ -10,12 +10,13 @@ var CallSchema = new Schema(
             required: [true, 'Phone number to call is required.']
         },
         audience: {
-            type: [String],
-            validate: {
-                validator: audienceValidator.validateAudiences,
-                isAsync: true,
-                message: 'Audience is invalid. Check that the audience exists.'
-            },
+            type: [Schema.Types.ObjectId],
+            ref: 'audiences',
+            // validate: {
+            //     validator: audienceValidator.validateAudiences,
+            //     isAsync: true,
+            //     message: 'Audience is invalid. Check that the audience exists.'
+            // },
             default: void 0
         }
     },
