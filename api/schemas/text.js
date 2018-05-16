@@ -21,6 +21,11 @@ var TextSchema = new Schema(
         audience: {
             type: [Schema.Types.ObjectId],
             ref: 'audiences',
+            validate: {
+                validator: audienceValidator.validateAudiences,
+                isAsync: true,
+                message: 'Audience is invalid. Check that the audience exists.'
+            },
             default: void 0
         }
     },
