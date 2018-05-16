@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5b048faa-6171-4ffe-ac0d-284fc8353cac",
+		"_postman_id": "9fb0b02a-101b-4aa3-9141-88a3e50044b7",
 		"name": "LifeLiner API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -57,7 +57,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base}}/organizations?page={{page}}&limit={{limit}}",
 							"host": [
@@ -92,7 +95,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Crisis Text Line\",\r\n    \"website\": \"https://www.crisistextline.org/\",\r\n    \"contacts\": {\r\n        \"text\": [\r\n            {\r\n                \"number\": \"741741\",\r\n                \"phrase\": \"CONNECT\"\r\n            }\r\n        ]\r\n    }\r\n}"
+							"raw": "{\r\n    \"name\": \"Crisis Text Line\",\r\n    \"website\": \"https://www.crisistextline.org/\",\r\n    \"contacts\": {\r\n        \"text\": [\r\n            {\r\n                \"number\": \"741741\",\r\n                \"phrase\": \"CONNECT\",\r\n                \"audience\": [\r\n                \t\"5afa54e5516c5b57c0d43227\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{base}}/organizations",
