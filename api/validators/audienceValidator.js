@@ -1,6 +1,6 @@
 const AudienceModel = require('../models/audience');
 
-async function validateAudiences(audienceIds) {
+async function audienceIdsExist(audienceIds) {
     for (var audienceId of audienceIds) {
         var count = await AudienceModel.count({ _id: audienceId });
         if (count < 1) {
@@ -11,5 +11,5 @@ async function validateAudiences(audienceIds) {
 }
 
 module.exports = {
-    validateAudiences
+    audienceIdsExist
 };

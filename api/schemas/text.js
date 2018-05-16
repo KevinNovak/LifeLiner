@@ -22,7 +22,7 @@ var TextSchema = new Schema(
             type: [Schema.Types.ObjectId],
             ref: 'audiences',
             validate: {
-                validator: audienceValidator.validateAudiences,
+                validator: audienceValidator.audienceIdsExist,
                 isAsync: true,
                 message: 'Audience is invalid. Check that the audience exists.'
             },
