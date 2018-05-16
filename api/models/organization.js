@@ -19,7 +19,17 @@ OrganizationModel.getOrganizations = async () => {
 };
 
 OrganizationModel.getOrganizationsByPage = async (page, limit) => {
-    return await OrganizationModel.paginate({}, { page: page, limit: limit });
+    var audiencePaths = [];
+    for (var contactType of contactTypes) {
+        audiencePaths.push({
+            path: `contacts.${contactType}.audience`,
+            model: 'audiences'
+        });
+    }
+    return await OrganizationModel.paginate(
+        {},
+        { page: page, limit: limit, populate: audiencePaths }
+    );
 };
 
 OrganizationModel.getOrganization = async id => {
