@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const AudienceSchema = require('../schemas/audience');
 
-var AudienceModel = mongoose.model('audiences', AudienceSchema);
+var AudienceModel = mongoose.model('Audience', AudienceSchema);
 
 AudienceModel.getAudiences = async () => {
     return await AudienceModel.find().exec();

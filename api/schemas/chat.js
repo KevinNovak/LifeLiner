@@ -11,7 +11,7 @@ var ChatSchema = new Schema(
         },
         audience: {
             type: [Schema.Types.ObjectId],
-            ref: 'audiences',
+            ref: 'Audience',
             validate: {
                 validator: audienceValidator.audienceIdsExist,
                 isAsync: true,

@@ -4,7 +4,7 @@ const OrganizationSchema = require('../schemas/organization');
 
 OrganizationSchema.plugin(mongoosePaginate);
 
-var OrganizationModel = mongoose.model('organizations', OrganizationSchema);
+var OrganizationModel = mongoose.model('Organization', OrganizationSchema);
 
 OrganizationModel.getOrganizations = async () => {
     return OrganizationModel.find().exec();
