@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 const OrganizationSchema = require('../schemas/organization');
+const contactTypes = require('../data/contactTypes.json');
 
 OrganizationSchema.plugin(mongoosePaginate);
 
@@ -31,6 +32,18 @@ OrganizationModel.updateOrganization = async (id, update) => {
 
 OrganizationModel.removeOrganization = async id => {
     return await OrganizationModel.findByIdAndRemove(id).exec();
+};
+
+OrganizationModel.getAudienceIds = async () => {
+    var audienceIds = [];
+    for (var contactType of contactTypes) {
+        audienceIds = audienceIds.concat(
+            (await OrganizationModel.distinct(
+                `contacts.${contactType}.audiences`
+            ).exec()).map(id => id.toString())
+        );
+    }
+    return Array.from(new Set(audienceIds));
 };
 
 module.exports = OrganizationModel;
