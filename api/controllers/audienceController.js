@@ -86,7 +86,6 @@ async function updateAudience(request, response) {
     }
 }
 
-// TODO: Don't remove unless not being used
 async function removeAudience(request, response) {
     try {
         var id = request.params.id;
