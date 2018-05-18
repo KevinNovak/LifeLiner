@@ -3,27 +3,27 @@ const AudienceSchema = require('../schemas/audience');
 
 var AudienceModel = mongoose.model('Audience', AudienceSchema);
 
-AudienceModel.getAudiences = async () => {
+exports.getAudiences = async () => {
     return await AudienceModel.find().exec();
 };
 
-AudienceModel.getAudience = async id => {
+exports.getAudience = async id => {
     return await AudienceModel.findById(id).exec();
 };
 
-AudienceModel.addAudience = async audience => {
+exports.addAudience = async audience => {
     return await AudienceModel.create(audience);
 };
 
-AudienceModel.updateAudience = async (id, update) => {
+exports.updateAudience = async (id, update) => {
     return await AudienceModel.findByIdAndUpdate(id, update, {
         runValidators: true,
         new: true
     }).exec();
 };
 
-AudienceModel.removeAudience = async id => {
+exports.removeAudience = async id => {
     return await AudienceModel.findByIdAndRemove(id).exec();
 };
 
-module.exports = AudienceModel;
+exports.Model = AudienceModel;

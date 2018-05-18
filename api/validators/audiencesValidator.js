@@ -1,8 +1,17 @@
+const OrganizationModel = require('../models/organization');
 const AudienceModel = require('../models/audience');
+
+async function audienceIdUsed(audienceId) {
+    var audienceIds = await OrganizationModel.getAudienceIds();
+    if (audienceIds.includes(audienceId)) {
+        return true;
+    }
+    return false;
+}
 
 async function audienceIdsExist(audienceIds) {
     for (var audienceId of audienceIds) {
-        var count = await AudienceModel.count({ _id: audienceId });
+        var count = await AudienceModel.Model.count({ _id: audienceId });
         if (count < 1) {
             return false;
         }
@@ -11,5 +20,6 @@ async function audienceIdsExist(audienceIds) {
 }
 
 module.exports = {
+    audienceIdUsed,
     audienceIdsExist
 };

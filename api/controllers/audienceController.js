@@ -1,4 +1,5 @@
 const AudienceModel = require('../models/audience');
+const audiencesValidator = require('../validators/audiencesValidator');
 const language = require('../data/language.json');
 
 async function getAudiences(request, response) {
@@ -89,13 +90,19 @@ async function updateAudience(request, response) {
 async function removeAudience(request, response) {
     try {
         var id = request.params.id;
-        var audience = await AudienceModel.removeAudience(id);
-        if (!audience) {
-            response.status(404).json({
-                error: `Could not find audience with ID: ${id}.`
+        if (await audiencesValidator.audienceIdUsed(id)) {
+            response.status(403).json({
+                error: `The ID: ${id} is currently being used.`
             });
         } else {
-            response.status(200).json(audience);
+            var audience = await AudienceModel.removeAudience(id);
+            if (!audience) {
+                response.status(404).json({
+                    error: `Could not find audience with ID: ${id}.`
+                });
+            } else {
+                response.status(200).json(audience);
+            }
         }
     } catch (error) {
         console.log(error.message);

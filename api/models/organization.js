@@ -7,34 +7,34 @@ OrganizationSchema.plugin(mongoosePaginate);
 
 var OrganizationModel = mongoose.model('Organization', OrganizationSchema);
 
-OrganizationModel.getOrganizations = async () => {
+exports.getOrganizations = async () => {
     return OrganizationModel.find().exec();
 };
 
-OrganizationModel.getOrganizationsByPage = async (page, limit) => {
+exports.getOrganizationsByPage = async (page, limit) => {
     return await OrganizationModel.paginate({}, { page: page, limit: limit });
 };
 
-OrganizationModel.getOrganization = async id => {
+exports.getOrganization = async id => {
     return await OrganizationModel.findById(id).exec();
 };
 
-OrganizationModel.addOrganization = async organization => {
+exports.addOrganization = async organization => {
     return await OrganizationModel.create(organization);
 };
 
-OrganizationModel.updateOrganization = async (id, update) => {
+exports.updateOrganization = async (id, update) => {
     return await OrganizationModel.findByIdAndUpdate(id, update, {
         runValidators: true,
         new: true
     }).exec();
 };
 
-OrganizationModel.removeOrganization = async id => {
+exports.removeOrganization = async id => {
     return await OrganizationModel.findByIdAndRemove(id).exec();
 };
 
-OrganizationModel.getAudienceIds = async () => {
+exports.getAudienceIds = async () => {
     var audienceIds = [];
     for (var contactType of contactTypes) {
         audienceIds = audienceIds.concat(
@@ -46,4 +46,4 @@ OrganizationModel.getAudienceIds = async () => {
     return Array.from(new Set(audienceIds));
 };
 
-module.exports = OrganizationModel;
+exports.Model = OrganizationModel;
