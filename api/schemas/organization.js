@@ -2,7 +2,7 @@ const Schema = require('mongoose').Schema;
 const ContactsSchema = require('./contacts');
 const LocationSchema = require('./location');
 const contactsValidator = require('../validators/contactsValidator');
-const locationsValidator = require('../validators/locationsValidator');
+const locationValidator = require('../validators/locationValidator');
 const regex = require('../data/regex');
 
 var OrganizationSchema = new Schema(
@@ -30,7 +30,7 @@ var OrganizationSchema = new Schema(
             type: [Schema.Types.ObjectId],
             ref: 'Location',
             validate: {
-                validator: locationsValidator.locationIdsExist,
+                validator: locationValidator.locationIdsExist,
                 isAsync: true,
                 message:
                     'Locations are invalid. Check that the locations exist.'

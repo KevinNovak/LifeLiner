@@ -1,5 +1,5 @@
 const AudienceModel = require('../models/audience');
-const audiencesValidator = require('../validators/audiencesValidator');
+const audienceValidator = require('../validators/audienceValidator');
 const language = require('../data/language.json');
 
 async function getAudiences(request, response) {
@@ -89,7 +89,7 @@ async function updateAudience(request, response) {
 async function removeAudience(request, response) {
     try {
         var id = request.params.id;
-        if (await audiencesValidator.audienceIdUsed(id)) {
+        if (await audienceValidator.audienceIdUsed(id)) {
             response.status(403).json({
                 error: `The ID: ${id} is currently being used.`
             });

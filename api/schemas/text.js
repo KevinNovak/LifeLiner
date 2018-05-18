@@ -1,5 +1,5 @@
 const Schema = require('mongoose').Schema;
-const audiencesValidator = require('../validators/audiencesValidator');
+const audienceValidator = require('../validators/audienceValidator');
 const regex = require('../data/regex');
 
 const numberPattern = new RegExp(
@@ -22,7 +22,7 @@ var TextSchema = new Schema(
             type: [Schema.Types.ObjectId],
             ref: 'Audience',
             validate: {
-                validator: audiencesValidator.audienceIdsExist,
+                validator: audienceValidator.audienceIdsExist,
                 isAsync: true,
                 message: 'Audiences are invalid. Check that the audiences exist.'
             },

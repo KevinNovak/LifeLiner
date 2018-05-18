@@ -1,5 +1,5 @@
 const LocationModel = require('../models/location');
-const locationsValidator = require('../validators/locationsValidator');
+const locationValidator = require('../validators/locationValidator');
 const language = require('../data/language.json');
 
 async function getLocations(request, response) {
@@ -89,7 +89,7 @@ async function updateLocation(request, response) {
 async function removeLocation(request, response) {
     try {
         var id = request.params.id;
-        if (await locationsValidator.locationIdUsed(id)) {
+        if (await locationValidator.locationIdUsed(id)) {
             response.status(403).json({
                 error: `The ID: ${id} is currently being used.`
             });
