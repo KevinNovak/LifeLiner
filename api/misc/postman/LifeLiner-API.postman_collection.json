@@ -283,6 +283,121 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Locations",
+			"description": "",
+			"item": [
+				{
+					"name": "GET /locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/locations",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /locations/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/locations/{{location-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"locations",
+								"{{location-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /locations",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"state\": \"Ohio\",\n\t\"city\": \"Cleveland\"\n}"
+						},
+						"url": {
+							"raw": "{{base}}/locations",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /locations/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"state\": \"New York\",\n\t\"city\": \"New York\"\n}"
+						},
+						"url": {
+							"raw": "{{base}}/locations/{{location-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"locations",
+								"{{location-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /locations/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/locations/{{location-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"locations",
+								"{{location-id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
