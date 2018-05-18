@@ -46,4 +46,16 @@ exports.getAudienceIds = async () => {
     return Array.from(new Set(audienceIds));
 };
 
+exports.getLocationIds = async () => {
+    var locationIds = [];
+    for (var contactType of contactTypes) {
+        locationIds = locationIds.concat(
+            (await OrganizationModel.distinct('locations').exec()).map(id =>
+                id.toString()
+            )
+        );
+    }
+    return Array.from(new Set(locationIds));
+};
+
 exports.Model = OrganizationModel;
