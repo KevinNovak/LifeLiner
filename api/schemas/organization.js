@@ -1,5 +1,6 @@
 const Schema = require('mongoose').Schema;
 const ContactsSchema = require('./contacts');
+const LocationSchema = require('./location');
 const contactsValidator = require('../validators/contactsValidator');
 const regex = require('../data/regex');
 
@@ -23,6 +24,17 @@ var OrganizationSchema = new Schema(
                 message: 'Contacts section requires at least one contact.'
             },
             required: [true, 'Organization contacts are required.']
+        },
+        locations: {
+            type: [Schema.Types.ObjectId],
+            ref: 'Location',
+            // validate: {
+            //     validator: locationsValidator.locationIdsExist,
+            //     isAsync: true,
+            //     message:
+            //         'Locations are invalid. Check that the locations exist.'
+            // },
+            default: void 0
         }
     },
     { versionKey: false }
