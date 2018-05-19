@@ -7,6 +7,10 @@ exports.getLocations = async () => {
     return await LocationModel.find().exec();
 };
 
+exports.getActiveLocations = async () => {
+    return await LocationModel.find({ active: true }).exec();
+};
+
 exports.getLocation = async id => {
     return await LocationModel.findById(id).exec();
 };

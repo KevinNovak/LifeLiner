@@ -307,6 +307,30 @@
 					"response": []
 				},
 				{
+					"name": "GET /locations?active=1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/locations?active=1",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"locations"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET /locations/{id}",
 					"request": {
 						"method": "GET",
