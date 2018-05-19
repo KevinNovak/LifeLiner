@@ -47,12 +47,9 @@ exports.getAudienceIds = async () => {
 };
 
 exports.getLocationIds = async () => {
-    var locationIds = [];
-    locationIds = locationIds.concat(
-        (await OrganizationModel.distinct('locations').exec()).map(id =>
-            id.toString()
-        )
-    );
+    var locationIds = (await OrganizationModel.distinct(
+        'locations'
+    ).exec()).map(id => id.toString());
     return Array.from(new Set(locationIds));
 };
 
