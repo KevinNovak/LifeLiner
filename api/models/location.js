@@ -3,12 +3,8 @@ const LocationSchema = require('../schemas/location');
 
 var LocationModel = mongoose.model('Location', LocationSchema);
 
-exports.getLocations = async () => {
-    return await LocationModel.find().exec();
-};
-
-exports.getActiveLocations = async () => {
-    return await LocationModel.find({ active: true }).exec();
+exports.getLocations = async (query = {}) => {
+    return await LocationModel.find(query).exec();
 };
 
 exports.getLocation = async id => {

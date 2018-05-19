@@ -4,13 +4,16 @@ const language = require('../data/language.json');
 
 async function getLocations(request, response) {
     try {
-        var active = request.query.active == '1';
-        var locations;
-        if (active) {
-            locations = await LocationModel.getActiveLocations();
-        } else {
-            locations = await LocationModel.getLocations();
+        var active = request.query.active;
+        var state = request.query.state;
+        var query = {};
+        if (active == '1') {
+            query.active = true;
         }
+        if (state) {
+            query.state = state;
+        }
+        var locations = await LocationModel.getLocations(query);
         response.status(200).json(locations);
     } catch (error) {
         console.log(error.message);
