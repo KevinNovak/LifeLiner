@@ -95,7 +95,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Crisis Text Line\",\r\n    \"website\": \"https://www.crisistextline.org/\",\r\n    \"contacts\": {\r\n        \"text\": [\r\n            {\r\n                \"number\": \"741741\",\r\n                \"phrase\": \"CONNECT\",\r\n                \"audiences\": [\r\n                \t\"5afa54e5516c5b57c0d43227\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
+							"raw": "{\r\n    \"name\": \"Crisis Text Line\",\r\n    \"website\": \"https://www.crisistextline.org/\",\r\n    \"contacts\": {\r\n        \"text\": [\r\n            {\r\n                \"number\": \"741741\",\r\n                \"phrase\": \"CONNECT\",\r\n                \"audiences\": [\r\n                \t\"5afa54e5516c5b57c0d43227\"\r\n                ]\r\n            }\r\n        ]\r\n    },\r\n    \"locations\": [\r\n    \t\"5b0096f064386ef34a5175af\"\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{base}}/organizations",
