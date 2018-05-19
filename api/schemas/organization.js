@@ -1,7 +1,7 @@
 const Schema = require('mongoose').Schema;
 const ContactsSchema = require('./contacts');
 const LocationSchema = require('./location');
-const contactsValidator = require('../validators/contactsValidator');
+const contactValidator = require('../validators/contactValidator');
 const locationValidator = require('../validators/locationValidator');
 const regex = require('../data/regex');
 
@@ -21,7 +21,7 @@ var OrganizationSchema = new Schema(
         contacts: {
             type: ContactsSchema,
             validate: {
-                validator: contactsValidator.validateContacts,
+                validator: contactValidator.validateContacts,
                 message: 'Contacts section requires at least one contact.'
             },
             required: [true, 'Organization contacts are required.']
