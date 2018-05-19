@@ -331,6 +331,30 @@
 					"response": []
 				},
 				{
+					"name": "GET /locations?state=OH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/locations?state=OH",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"locations"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "OH"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET /locations/{id}",
 					"request": {
 						"method": "GET",
