@@ -35,15 +35,21 @@ exports.removeOrganization = async id => {
 };
 
 exports.getAudienceIds = async () => {
-    var audienceIds = [];
+    var ids = [];
+    var objectIds = [];
     for (var contactType of contactTypes) {
-        audienceIds = audienceIds.concat(
-            await OrganizationModel.distinct(
-                `contacts.${contactType}.audiences`
-            ).exec()
-        );
+        var results = await OrganizationModel.distinct(
+            `contacts.${contactType}.audiences`
+        ).exec();
+        for (var result of results) {
+            var id = result.toString();
+            if (!ids.includes(id)) {
+                ids.push(id);
+                objectIds.push(result);
+            }
+        }
     }
-    return Array.from(new Set(audienceIds));
+    return objectIds;
 };
 
 exports.getLocationIds = async () => {
