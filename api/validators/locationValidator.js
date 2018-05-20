@@ -2,7 +2,9 @@ const OrganizationModel = require('../models/organization');
 const LocationModel = require('../models/location');
 
 async function locationIdUsed(locationId) {
-    var locationIds = await OrganizationModel.getLocationIds();
+    var locationIds = (await OrganizationModel.getLocationIds()).map(id =>
+        id.toString()
+    );
     if (locationIds.includes(locationId)) {
         return true;
     }

@@ -8,11 +8,6 @@ var LocationSchema = new Schema(
         },
         city: {
             type: String
-        },
-        active: {
-            type: Boolean,
-            default: false,
-            required: true
         }
     },
     { versionKey: false }

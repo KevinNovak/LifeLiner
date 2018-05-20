@@ -47,10 +47,7 @@ exports.getAudienceIds = async () => {
 };
 
 exports.getLocationIds = async () => {
-    var locationIds = (await OrganizationModel.distinct(
-        'locations'
-    ).exec()).map(id => id.toString());
-    return Array.from(new Set(locationIds));
+    return await OrganizationModel.distinct('locations').exec();
 };
 
 exports.Model = OrganizationModel;

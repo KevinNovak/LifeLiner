@@ -1,4 +1,5 @@
 const LocationModel = require('../models/location');
+const OrganizationModel = require('../models/organization');
 const locationValidator = require('../validators/locationValidator');
 const language = require('../data/language.json');
 
@@ -6,14 +7,16 @@ async function getLocations(request, response) {
     try {
         var active = request.query.active;
         var state = request.query.state;
-        var query = {};
+        var locations;
         if (active == '1') {
-            query.active = true;
+            locations = await getActiveLocations();
+        } else {
+            var query = {};
+            if (state) {
+                query.state = state;
+            }
+            locations = await LocationModel.getLocations(query);
         }
-        if (state) {
-            query.state = state;
-        }
-        var locations = await LocationModel.getLocations(query);
         response.status(200).json(locations);
     } catch (error) {
         console.log(error.message);
@@ -21,6 +24,12 @@ async function getLocations(request, response) {
             error: language.errors['500']
         });
     }
+}
+
+async function getActiveLocations() {
+    var locationIds = await OrganizationModel.getLocationIds();
+    var query = { _id: { $in: locationIds } };
+    return await LocationModel.getLocations(query);
 }
 
 async function getLocation(request, response) {
