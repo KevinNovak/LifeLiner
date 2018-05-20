@@ -3,8 +3,8 @@ const AudienceSchema = require('../schemas/audience');
 
 var AudienceModel = mongoose.model('Audience', AudienceSchema);
 
-exports.getAudiences = async () => {
-    return await AudienceModel.find().exec();
+exports.getAudiences = async (query = {}) => {
+    return await AudienceModel.find(query).exec();
 };
 
 exports.getAudience = async id => {

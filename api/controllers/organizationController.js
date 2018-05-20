@@ -16,7 +16,7 @@ async function getOrganizations(request, response) {
         }
         response.status(200).json(organizations);
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });
@@ -35,7 +35,7 @@ async function getOrganization(request, response) {
             response.status(200).json(organization);
         }
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });
@@ -55,7 +55,7 @@ async function addOrganization(request, response) {
                 error: error.message
             });
         } else {
-            console.log(error.message);
+            console.error(error);
             response.status(500).json({
                 error: language.errors['500']
             });
@@ -84,7 +84,7 @@ async function updateOrganization(request, response) {
                 error: error.message
             });
         } else {
-            console.log(error.message);
+            console.error(error);
             response.status(500).json({
                 error: language.errors['500']
             });
@@ -104,7 +104,7 @@ async function removeOrganization(request, response) {
             response.status(200).json(organization);
         }
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });

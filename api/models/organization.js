@@ -38,9 +38,9 @@ exports.getAudienceIds = async () => {
     var audienceIds = [];
     for (var contactType of contactTypes) {
         audienceIds = audienceIds.concat(
-            (await OrganizationModel.distinct(
+            await OrganizationModel.distinct(
                 `contacts.${contactType}.audiences`
-            ).exec()).map(id => id.toString())
+            ).exec()
         );
     }
     return Array.from(new Set(audienceIds));

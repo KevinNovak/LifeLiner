@@ -10,7 +10,7 @@ const apiPort = config.api.port;
 // Connect to database
 mongoose.connect(config.database.connection).catch(error => {
     console.error('Unable to connect to database.');
-    console.error(error.message);
+    console.error(error);
 });
 
 // Setup API
@@ -26,5 +26,5 @@ var server = app.listen(apiPort, () => {
 
 process.on('unhandledRejection', error => {
     console.error('A promise rejection was unhandled.');
-    console.error(error.message);
+    console.error(error);
 });

@@ -186,6 +186,30 @@
 					"response": []
 				},
 				{
+					"name": "GET /audiences?active=1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/audiences?active=1",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"audiences"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET /audiences/{id}",
 					"request": {
 						"method": "GET",
