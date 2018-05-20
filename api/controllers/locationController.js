@@ -19,7 +19,7 @@ async function getLocations(request, response) {
         }
         response.status(200).json(locations);
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });
@@ -44,7 +44,7 @@ async function getLocation(request, response) {
             response.status(200).json(location);
         }
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });
@@ -57,8 +57,8 @@ async function addLocation(request, response) {
         var location = await LocationModel.addLocation(locationToAdd);
         response.status(201).json(location);
     } catch (error) {
-        console.log(error.name);
-        console.log(error.code);
+        console.error(error.name);
+        console.error(error.code);
         if (
             error.name == 'ValidationError' ||
             error.message.includes('E11000')
@@ -67,7 +67,7 @@ async function addLocation(request, response) {
                 error: error.message
             });
         } else {
-            console.log(error.message);
+            console.error(error);
             response.status(500).json({
                 error: language.errors['500']
             });
@@ -96,7 +96,7 @@ async function updateLocation(request, response) {
                 error: error.message
             });
         } else {
-            console.log(error.message);
+            console.error(error);
             response.status(500).json({
                 error: language.errors['500']
             });
@@ -122,7 +122,7 @@ async function removeLocation(request, response) {
             }
         }
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });

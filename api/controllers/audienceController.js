@@ -1,17 +1,30 @@
 const AudienceModel = require('../models/audience');
+const OrganizationModel = require('../models/organization');
 const audienceValidator = require('../validators/audienceValidator');
 const language = require('../data/language.json');
 
 async function getAudiences(request, response) {
     try {
-        var audiences = await AudienceModel.getAudiences();
+        var active = request.query.active;
+        var audiences;
+        if (active == '1') {
+            audiences = await getActiveAudiences();
+        } else {
+            audiences = await AudienceModel.getAudiences();
+        }
         response.status(200).json(audiences);
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });
     }
+}
+
+async function getActiveAudiences() {
+    var audienceIds = await OrganizationModel.getAudienceIds();
+    var query = { _id: { $in: audienceIds } };
+    return await AudienceModel.getAudiences(query);
 }
 
 async function getAudience(request, response) {
@@ -26,7 +39,7 @@ async function getAudience(request, response) {
             response.status(200).json(audience);
         }
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });
@@ -39,8 +52,6 @@ async function addAudience(request, response) {
         var audience = await AudienceModel.addAudience(audienceToAdd);
         response.status(201).json(audience);
     } catch (error) {
-        console.log(error.name);
-        console.log(error.code);
         if (
             error.name == 'ValidationError' ||
             error.message.includes('E11000')
@@ -49,7 +60,7 @@ async function addAudience(request, response) {
                 error: error.message
             });
         } else {
-            console.log(error.message);
+            console.error(error);
             response.status(500).json({
                 error: language.errors['500']
             });
@@ -78,7 +89,7 @@ async function updateAudience(request, response) {
                 error: error.message
             });
         } else {
-            console.log(error.message);
+            console.error(error);
             response.status(500).json({
                 error: language.errors['500']
             });
@@ -104,7 +115,7 @@ async function removeAudience(request, response) {
             }
         }
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         response.status(500).json({
             error: language.errors['500']
         });
