@@ -2,7 +2,7 @@ const OrganizationModel = require('../models/organization');
 const AudienceModel = require('../models/audience');
 
 async function audienceIdUsed(audienceId) {
-    var audienceIds = await OrganizationModel.getAudienceIds().map(id =>
+    var audienceIds = (await OrganizationModel.getAudienceIds()).map(id =>
         id.toString()
     );
     if (audienceIds.includes(audienceId)) {
