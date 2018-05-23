@@ -29,11 +29,12 @@ exports.getOrganizations = async (populate = false) => {
     return await query.exec();
 };
 
-exports.getOrganizationsByPage = async (page, limit) => {
-    return await OrganizationModel.paginate(
-        {},
-        { page: page, limit: limit, populate: populateOptions }
-    );
+exports.getOrganizationsByPage = async (page, limit, populate = false) => {
+    var paginateOptions = { page: page, limit: limit };
+    if (populate) {
+        paginateOptions.populate = populateOptions;
+    }
+    return await OrganizationModel.paginate({}, paginateOptions);
 };
 
 exports.getOrganization = async id => {

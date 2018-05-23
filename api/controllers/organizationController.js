@@ -10,7 +10,8 @@ async function getOrganizations(request, response) {
         if (page && limit) {
             organizations = await OrganizationModel.getOrganizationsByPage(
                 page,
-                limit
+                limit,
+                populate
             );
         } else {
             organizations = await OrganizationModel.getOrganizations(populate);
