@@ -7,12 +7,29 @@ OrganizationSchema.plugin(mongoosePaginate);
 
 var OrganizationModel = mongoose.model('Organization', OrganizationSchema);
 
+const populateOptions = [
+    {
+        path: 'locations',
+        model: 'Location'
+    }
+];
+
+for (contactType of contactTypes) {
+    populateOptions.push({
+        path: `contacts.${contactType}.audiences`,
+        model: 'Audience'
+    });
+}
+
 exports.getOrganizations = async () => {
     return OrganizationModel.find().exec();
 };
 
 exports.getOrganizationsByPage = async (page, limit) => {
-    return await OrganizationModel.paginate({}, { page: page, limit: limit });
+    return await OrganizationModel.paginate(
+        {},
+        { page: page, limit: limit, populate: populateOptions }
+    );
 };
 
 exports.getOrganization = async id => {
