@@ -21,8 +21,12 @@ for (contactType of contactTypes) {
     });
 }
 
-exports.getOrganizations = async () => {
-    return OrganizationModel.find().exec();
+exports.getOrganizations = async (populate = false) => {
+    var query = OrganizationModel.find();
+    if (populate) {
+        query.populate(populateOptions);
+    }
+    return await query.exec();
 };
 
 exports.getOrganizationsByPage = async (page, limit) => {

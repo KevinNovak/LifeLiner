@@ -31,22 +31,24 @@
 					"response": []
 				},
 				{
-					"name": "GET /organizations/{id}",
+					"name": "GET /organizations?populate=1",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
-							"raw": "{{base}}/organizations/{{organization-id}}",
+							"raw": "{{base}}/organizations?populate=1",
 							"host": [
 								"{{base}}"
 							],
 							"path": [
-								"organizations",
-								"{{organization-id}}"
+								"organizations"
+							],
+							"query": [
+								{
+									"key": "populate",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -78,6 +80,60 @@
 									"key": "limit",
 									"value": "{{limit}}"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /organizations?populate=1&page={page}&limit={limit}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base}}/organizations?populate=1&page={{page}}&limit={{limit}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"organizations"
+							],
+							"query": [
+								{
+									"key": "populate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /organizations/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base}}/organizations/{{organization-id}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"organizations",
+								"{{organization-id}}"
 							]
 						}
 					},

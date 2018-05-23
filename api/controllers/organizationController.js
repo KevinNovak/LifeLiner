@@ -5,6 +5,7 @@ async function getOrganizations(request, response) {
     try {
         var page = parseInt(request.query.page);
         var limit = parseInt(request.query.limit);
+        var populate = request.query.populate == '1';
         var organizations;
         if (page && limit) {
             organizations = await OrganizationModel.getOrganizationsByPage(
@@ -12,7 +13,7 @@ async function getOrganizations(request, response) {
                 limit
             );
         } else {
-            organizations = await OrganizationModel.getOrganizations();
+            organizations = await OrganizationModel.getOrganizations(populate);
         }
         response.status(200).json(organizations);
     } catch (error) {
