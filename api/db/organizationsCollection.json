@@ -1,2 +1,56 @@
-{"_id":{"$oid":"5b04d72c9d645b2eb810ba81"},"name":"National Suicide Prevention Lifeline","website":"https://suicidepreventionlifeline.org/","contacts":{"call":[{"number":"1-800-273-8255"},{"number":"1-888-628-9454","audiences":[{"$oid":"5b04d6779d645b2eb810ba7c"}]},{"number":"1-800-799-4889","audiences":[{"$oid":"5b04d67e9d645b2eb810ba7d"}]}],"chat":[{"url":"https://suicidepreventionlifeline.org/chat/"}]}}
-{"_id":{"$oid":"5b04d7549d645b2eb810ba82"},"name":"Crisis Text Line","website":"https://www.crisistextline.org/","contacts":{"text":[{"number":"741741","phrase":"CONNECT"}]},"locations":[{"$oid":"5b04da059ddd9306808ef66a"}]}
+[{
+	"_id": {
+		"$oid": "5b04d72c9d645b2eb810ba81"
+	},
+	"name": "National Suicide Prevention Lifeline",
+	"website": "https://suicidepreventionlifeline.org/",
+	"contacts": {
+		"call": [
+			{
+				"number": "1-800-273-8255"
+			},
+			{
+				"number": "1-888-628-9454",
+				"audiences": [
+					{
+						"$oid": "5b04d6779d645b2eb810ba7c"
+					}
+				]
+			},
+			{
+				"number": "1-800-799-4889",
+				"audiences": [
+					{
+						"$oid": "5b04d67e9d645b2eb810ba7d"
+					}
+				]
+			}
+		],
+		"chat": [
+			{
+				"url": "https://suicidepreventionlifeline.org/chat/"
+			}
+		]
+	}
+},
+{
+	"_id": {
+		"$oid": "5b04d7549d645b2eb810ba82"
+	},
+	"name": "Crisis Text Line",
+	"website": "https://www.crisistextline.org/",
+	"contacts": {
+		"text": [
+			{
+				"number": "741741",
+				"phrase": "CONNECT"
+			}
+		]
+	},
+	"locations": [
+		{
+			"$oid": "5b04da059ddd9306808ef66a"
+		}
+	]
+}]
+
