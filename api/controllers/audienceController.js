@@ -5,9 +5,9 @@ const language = require('../data/language.json');
 
 async function getAudiences(request, response) {
     try {
-        var active = request.query.active;
+        var active = request.query.active == '1';
         var audiences;
-        if (active == '1') {
+        if (active) {
             audiences = await getActiveAudiences();
         } else {
             audiences = await AudienceModel.getAudiences();

@@ -5,10 +5,10 @@ const language = require('../data/language.json');
 
 async function getLocations(request, response) {
     try {
-        var active = request.query.active;
+        var active = request.query.active == '1';
         var state = request.query.state;
         var locations;
-        if (active == '1') {
+        if (active) {
             locations = await getActiveLocations();
         } else {
             var query = {};
